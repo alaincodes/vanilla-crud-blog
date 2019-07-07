@@ -1,2 +1,5 @@
 # vanilla-crud-blog
-CRUD blog connected to API, headless CMS.
+
+Building website for mini blog post.
+
+https://miniblog.netlify.com/
