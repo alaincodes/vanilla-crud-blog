@@ -14,50 +14,69 @@
         <li>
           <button id="add-post-btn" class="add-post-btn">Add Post</button>
         </li>
-        <li><a href="#">about</a></li>
+        <li><a href="./src/pages/about.html">about</a></li>
         <li><input type="search" placeholder="search..." /></li>
       </ul>
     </nav>
     <h1 class="title">latest mini blog post</h1>
     <p class="title-desc">for people who want to blog but not too much.</p>
-    <section class="grid-container">
-      <div>
+    <section id="post-container" class="grid-container">
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 1</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
-      <div>
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 2</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
-      <div>
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 3</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
 
-      <div>
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 4</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
-      <div>
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 5</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
-      <div>
+      <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>Story 6</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
-        <button>read</button>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
       </div>
+      <aside></aside>
     </section>
 
     <!-- Add Post Modal -->
@@ -67,18 +86,25 @@
         <span class="close-modal-btn">&times;</span>
         <h1>Add mini blog post here.</h1>
         <br />
-        <form action="#">
+        <form id="form-post" action="#">
           Title:
           <br />
-          <input type="text" maxlength="20" placeholder="blog title.." />
+          <input
+            id="add-post-title"
+            type="text"
+            maxlength="20"
+            placeholder="blog title.."
+          />
           <br />
           <br />
           Blog Content: <br />
           <br />
-          <textarea class="blog-post-box">blog content..</textarea>
+          <textarea id="add-post-text" class="blog-post-box">
+blog content..</textarea
+          >
           <br />
           <br />
-          <input type="submit" value="submit" />
+          <input id="submit-post-btn" type="submit" value="submit" />
         </form>
       </div>
     </div>

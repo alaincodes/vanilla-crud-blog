@@ -2,7 +2,7 @@
   font-size: 1.125rem;
   --primary-bg: #a01c32;
   --secondary-bg: #404e88;
-  --primary-color: #f7f7f8;
+  --text-color: #f7f7f8;
   --border-color: #9aa0a3b0;
 }
 
@@ -45,7 +45,7 @@ ul {
   padding: 1rem;
 }
 .nav-container ul li a {
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 .nav-container ul li a:hover {
   color: var(--border-color);
@@ -58,7 +58,7 @@ ul {
 }
 .nav-container ul .add-post-btn {
   background: transparent;
-  color: var(--primary-color);
+  color: var(--text-color);
   border: none;
   cursor: pointer;
   font-size: 0.9rem;
@@ -89,7 +89,7 @@ ul {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
-.grid-container div {
+.grid-container .blog-post-card {
   height: 200px;
   min-width: 300px;
   background: var(--secondary-bg);
@@ -104,13 +104,13 @@ ul {
   position: relative;
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.589));
 }
-.grid-container div .close-btn {
+.grid-container .blog-post-card .close-btn {
   position: absolute;
   top: 15px;
   right: 15px;
   transform: translate(15px, -15px);
   cursor: pointer;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--text-color);
   border-radius: 50%;
   height: 22px;
   width: 22px;
@@ -118,33 +118,47 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-color);
+  color: var(--text-color);
   transition: all 0.2s ease-out;
   padding: 0.6rem;
 }
-.grid-container div .close-btn:hover {
+.grid-container .blog-post-card .close-btn:hover {
   background: rgba(184, 13, 13, 0.699);
 }
-.grid-container div h2 {
-  color: var(--primary-color);
+.grid-container .blog-post-card h2 {
+  color: var(--text-color);
   margin: 1rem auto;
 }
-.grid-container div p {
-  color: var(--primary-color);
+.grid-container .blog-post-card p {
+  color: var(--text-color);
   margin: 0.5rem auto;
 }
-.grid-container div button {
+.grid-container .blog-post-card .footer-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.grid-container .blog-post-card .footer-card button {
   background: transparent;
-  color: var(--primary-color);
+  color: var(--text-color);
   border-radius: 2.5px;
   padding: 0.4rem 0.7rem;
   margin: 1rem auto;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--text-color);
   cursor: pointer;
   transition: all 0.2s ease-out;
 }
-.grid-container div button:hover {
+.grid-container .blog-post-card .footer-card button:hover {
   background: var(--primary-bg);
+}
+.grid-container .blog-post-card .footer-card .edit-post {
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: all 0.2s ease-in-out;
+}
+.grid-container .blog-post-card .footer-card .edit-post:hover {
+  color: var(--primary-bg);
 }
 
 .modal {
@@ -196,7 +210,7 @@ ul {
 }
 .modal .modal-content input[type=submit]:hover {
   background: var(--primary-bg);
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 .modal .modal-content .close-modal-btn {
   color: var(--primary-bg);
@@ -216,13 +230,24 @@ ul {
 .modal .modal-content .close-modal-btn:hover,
 .modal .modal-content .close-modal-btn:focus {
   background: var(--primary-bg);
-  color: var(--primary-color);
+  color: var(--text-color);
   cursor: pointer;
 }
 .modal .modal-content h1 {
   color: var(--primary-bg);
   text-align: center;
   margin: 1rem auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /*# sourceMappingURL=/styles.bf60c9a4.css.map */

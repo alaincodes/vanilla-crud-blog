@@ -2,7 +2,7 @@
   font-size: 1.125rem;
   --primary-bg: #a01c32;
   --secondary-bg: #404e88;
-  --primary-color: #f7f7f8;
+  --text-color: #f7f7f8;
   --border-color: #9aa0a3b0;
 }
 
@@ -45,7 +45,7 @@ ul {
     li {
       padding: 1rem;
       a {
-        color: var(--primary-color);
+        color: var(--text-color);
         &:hover {
           color: var(--border-color);
         }
@@ -59,7 +59,7 @@ ul {
     }
     .add-post-btn {
       background: transparent;
-      color: var(--primary-color);
+      color: var(--text-color);
       border: none;
       cursor: pointer;
       font-size: 0.9rem;
@@ -93,7 +93,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
-  div {
+  .blog-post-card {
     height: 200px;
     min-width: 300px;
     background: var(--secondary-bg);
@@ -113,7 +113,7 @@ ul {
       right: 15px;
       transform: translate(15px, -15px);
       cursor: pointer;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--text-color);
       border-radius: 50%;
       height: 22px;
       width: 22px;
@@ -121,7 +121,7 @@ ul {
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--primary-color);
+      color: var(--text-color);
       transition: all 0.2s ease-out;
       padding: 0.6rem;
       &:hover {
@@ -129,28 +129,44 @@ ul {
       }
     }
     h2 {
-      color: var(--primary-color);
+      color: var(--text-color);
       margin: 1rem auto;
     }
     p {
-      color: var(--primary-color);
+      color: var(--text-color);
       margin: 0.5rem auto;
     }
-    button {
-      background: transparent;
-      color: var(--primary-color);
-      border-radius: 2.5px;
-      padding: 0.4rem 0.7rem;
-      margin: 1rem auto;
-      border: 2px solid var(--primary-color);
-      cursor: pointer;
-      transition: all 0.2s ease-out;
-      &:hover {
-        background: var(--primary-bg);
+    .footer-card {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        background: transparent;
+        color: var(--text-color);
+        border-radius: 2.5px;
+        padding: 0.4rem 0.7rem;
+        margin: 1rem auto;
+        border: 2px solid var(--text-color);
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+        &:hover {
+          background: var(--primary-bg);
+        }
+      }
+      .edit-post {
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          color: var(--primary-bg);
+        }
       }
     }
   }
 }
+
+// ADD POST MODAL SETUP ************************
 
 .modal {
   display: none;
@@ -198,7 +214,7 @@ ul {
       transition: all 0.2s ease-in-out;
       &:hover {
         background: var(--primary-bg);
-        color: var(--primary-color);
+        color: var(--text-color);
       }
     }
     .close-modal-btn {
@@ -219,7 +235,7 @@ ul {
     .close-modal-btn:hover,
     .close-modal-btn:focus {
       background: var(--primary-bg);
-      color: var(--primary-color);
+      color: var(--text-color);
       cursor: pointer;
     }
     h1 {
@@ -227,5 +243,17 @@ ul {
       text-align: center;
       margin: 1rem auto;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
