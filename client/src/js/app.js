@@ -21,5 +21,21 @@ fetch("http://localhost:3000/posts")
     return result.json();
   })
   .then(data => {
-    console.log(data);
+    // console.log(data);
+    const PostGridSection = document.getElementById("post-container");
+    let displayPost = "";
+    data.forEach(post => {
+      displayPost += `
+      <div class="blog-post-card">
+        <span class="close-btn">&times;</span>
+        <h2>${post.title}</h2>
+        <p>${post.description}</p>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
+      </div>
+      `;
+    });
+    PostGridSection.innerHTML = displayPost;
   });
