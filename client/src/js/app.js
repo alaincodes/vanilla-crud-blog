@@ -2,39 +2,6 @@ const addPostBtn = document.getElementById("add-post-btn");
 const addPostModal = document.getElementById("add-Post-Modal");
 const closeModalBtn = document.getElementsByClassName("close-modal-btn")[0];
 
-let blogPosts = [];
-
-function addPost(postText) {
-  blogPosts.push(postText);
-}
-function deletePost(index) {
-  blogPosts.splice(index, 1);
-}
-
-function getPostValue() {
-  let postTextValue = document.getElementById("post-text-value");
-  blogPosts.addPost(postTextValue.value);
-  postTextValue.value = "";
-}
-
-function getDeletePostBtn() {
-  let deletePosteBtn = document.getElementById("delete-post-btn");
-  deletePosteBtn.addEventListener("click", () => {
-    blogPosts.deletePost(index);
-  });
-}
-
-const submitPostBtn = document.getElementById("submit-post-btn");
-submitPostBtn.addEventListener("click", () => {
-  getPostValue();
-  addPostModal.style.display = "none";
-});
-
-function getPostValue() {
-  let postTextarea = document.getElementById("post-text-value").value;
-  document.getElementById("postValue").innerHTML = postTextarea;
-}
-
 // ADD POST MODAL
 
 addPostBtn.addEventListener("click", () => {
@@ -52,6 +19,73 @@ addPostModal.addEventListener("click", event => {
   if (event.target == addPostModal) {
     addPostModal.style.display = "none";
   }
+});
+
+class Blog {
+  constructor(title, text) {
+    this.title = title;
+    this.text = text;
+  }
+}
+
+class UI {
+  static addBlogToList(blog) {
+    const list = document.querySelector("#post-container");
+
+    const row = document.createElement("div");
+
+    row.innerHTML = `
+    <div class="blog-post-card">
+    <span id="delete-post-btn" class="close-btn delete">&times;</span>
+    <h2>${blog.title}</h2>
+    <p>${blog.text}</p>
+    <div class="footer-card">
+      <button>read</button>
+      <p class="edit-post">Edit..</p>
+    </div>
+  </div>
+      `;
+
+    list.appendChild(row);
+  }
+
+  static clearFields() {
+    document.querySelector("#post-title-value").value = "";
+    document.querySelector("#post-text-value").value = "";
+    addPostModal.style.display = "none";
+  }
+
+  static deleteBlog(el) {
+    if (el.classList.contains("delete")) {
+      el.parentElement.parentElement.remove();
+    }
+  }
+}
+
+// Event: Display Books
+document.addEventListener("DOMContentLoaded", UI.displayBlogs);
+
+// Event: Add a Book
+document.querySelector("#form-post").addEventListener("submit", e => {
+  // Prevent actual submit
+  e.preventDefault();
+
+  // Get form values
+  const title = document.querySelector("#post-title-value").value;
+  const text = document.querySelector("#post-text-value").value;
+
+  // Instatiate blog
+  const blog = new Blog(title, text);
+
+  // Add blog to UI
+  UI.addBlogToList(blog);
+
+  UI.clearFields();
+});
+
+document.querySelector("#post-container").addEventListener("click", e => {
+  // Remove book from UI
+  UI.deleteBlog(e.target);
 });
 
 // Fetch Blog Posts link

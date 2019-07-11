@@ -21,7 +21,7 @@
     <h1 class="title">latest mini blog post</h1>
     <p class="title-desc">for people who want to blog but not too much.</p>
     <section id="post-container" class="grid-container">
-      <div class="blog-post-card">
+      <!-- <div class="blog-post-card">
         <span id="delete-post-btn" class="close-btn">&times;</span>
         <h2>Story 1</h2>
         <p>Summary.. Lorem ipsum dolor sit amet.</p>
@@ -75,8 +75,7 @@
           <button>read</button>
           <p class="edit-post">Edit..</p>
         </div>
-      </div>
-      <aside id="postValue"></aside>
+      </div> -->
     </section>
 
     <!-- Add Post Modal -->
@@ -86,7 +85,7 @@
         <span class="close-modal-btn">&times;</span>
         <h1>Add mini blog post here.</h1>
         <br />
-        <form id="form-post" action="#">
+        <form id="form-post">
           Title:
           <br />
           <input
@@ -99,9 +98,11 @@
           <br />
           Blog Content: <br />
           <br />
-          <textarea id="post-text-value" class="blog-post-box">
-blog content..</textarea
-          >
+          <textarea
+            placeholder="your mini post here.."
+            id="post-text-value"
+            class="blog-post-box"
+          ></textarea>
           <br />
           <br />
           <input id="submit-post-btn" type="submit" value="submit" />
