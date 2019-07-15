@@ -29,6 +29,11 @@ class Blog {
 }
 
 class UI {
+  static displayBlogs() {
+    const blogs = StoreBlog.getBlogs();
+    blogs.forEach(blog => UI.addBlogToList(blog));
+  }
+
   static addBlogToList(blog) {
     const list = document.querySelector("#post-container");
 
@@ -49,16 +54,45 @@ class UI {
     list.appendChild(row);
   }
 
+  static deleteBlog(el) {
+    if (el.classList.contains("delete")) {
+      el.parentElement.parentElement.remove();
+    }
+  }
+
   static clearFields() {
     document.querySelector("#post-title-value").value = "";
     document.querySelector("#post-text-value").value = "";
     addPostModal.style.display = "none";
   }
+}
 
-  static deleteBlog(el) {
-    if (el.classList.contains("delete")) {
-      el.parentElement.parentElement.remove();
+class StoreBlog {
+  static getBlogs() {
+    let blogs;
+    if (localStorage.getItem("blogs") === null) {
+      blogs = [];
+    } else {
+      blogs = JSON.parse(localStorage.getItem(blogs));
     }
+    return blogs;
+  }
+
+  static addBlog(blog) {
+    const blogs = StoreBlog.getBlogs();
+    blogs.push(blog);
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+  }
+
+  static removeBlog(title) {
+    const blogs = StoreBlog.getBlogs();
+
+    blogs.forEach((blog, index) => {
+      if (blog.title === title) {
+        blogs.splice(index, 1);
+      }
+    });
+    localStorage.setItem("blogs", JSON.stringify(blogs));
   }
 }
 
@@ -79,6 +113,9 @@ document.querySelector("#form-post").addEventListener("submit", e => {
 
   // Add blog to UI
   UI.addBlogToList(blog);
+
+  // Add book to store
+  StoreBlog.addBlog(blog);
 
   UI.clearFields();
 });
