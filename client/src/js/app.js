@@ -16,10 +16,36 @@ addPostModal.addEventListener("click", event => {
   }
 });
 
-const storePosts = ["helo", "post2"];
+const storePosts = [
+  {
+    title: "First Post",
+    content: "Hello im teaching you how to cook"
+  },
+  {
+    title: "Second Post",
+    content: "how  to build a heavyweight career while sleeping"
+  }
+];
 
-const addPost = function(postContent) {
-  storePosts.push(postContent);
+const addPost = function(title, content) {
+  storePosts.push({
+    title: title,
+    content: content
+  });
+};
+
+const postBtn = document.getElementById("addPostContent");
+postBtn.addEventListener("click", () => {
+  addPostValue();
+});
+
+const addPostValue = function() {
+  let addPostTitle = document.getElementById("post-title-value").value;
+  let addPostContentValue = document.getElementById("post-text-value").value;
+  addPost(addPostTitle, addPostContentValue);
+  addPostTitle.value = "";
+  addPostContentValue.value = "";
+  displayPost(); // not working, flashing for 1s..
 };
 
 const displayPost = function() {
@@ -28,13 +54,9 @@ const displayPost = function() {
   storePosts.forEach(post => {
     para += `
       <div class="blog-post-card">
-        <span id="close-btn" class="close-btn">&times;</span>
+        <span class="close-btn">&times;</span>
         <h2>${post.title}</h2>
-        <p>${post}</p>
-        <div class="footer-card">
-          <button>read</button>
-          <p class="edit-post">Edit..</p>
-        </div>
+        <p>${post.content}</p>
       </div>
     `;
   });
