@@ -1,8 +1,6 @@
 const addPostBtn = document.getElementById("add-post-btn");
 const addPostModal = document.getElementById("add-Post-Modal");
-const closeModalBtn = document.getElementsByClassName("close-modal-btn")[0];
-
-// ADD POST MODAL
+const closeModalBtn = document.querySelector(".close-modal-btn");
 
 addPostBtn.addEventListener("click", () => {
   addPostModal.style.display = "block";
@@ -17,6 +15,33 @@ addPostModal.addEventListener("click", event => {
     addPostModal.style.display = "none";
   }
 });
+
+const storePosts = ["helo", "post2"];
+
+const addPost = function(postContent) {
+  storePosts.push(postContent);
+};
+
+const displayPost = function() {
+  const postContainer = document.getElementById("post-container");
+  let para = "";
+  storePosts.forEach(post => {
+    para += `
+      <div class="blog-post-card">
+        <span id="close-btn" class="close-btn">&times;</span>
+        <h2>${post.title}</h2>
+        <p>${post}</p>
+        <div class="footer-card">
+          <button>read</button>
+          <p class="edit-post">Edit..</p>
+        </div>
+      </div>
+    `;
+  });
+  postContainer.innerHTML = para;
+};
+
+displayPost();
 
 // Fetch Blog Posts link
 
