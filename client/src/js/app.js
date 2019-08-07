@@ -34,14 +34,14 @@ const addPost = function(title, content) {
   });
 };
 
-const postBtn = document.getElementById("addPostContent");
+const postBtn = document.querySelector("#addPostContent");
 postBtn.addEventListener("click", () => {
   addPostValue();
 });
 
 const addPostValue = function() {
-  let addPostTitle = document.getElementById("post-title-value").value;
-  let addPostContentValue = document.getElementById("post-text-value").value;
+  let addPostTitle = document.querySelector("#post-title-value").value;
+  let addPostContentValue = document.querySelector("#post-text-value").value;
   addPost(addPostTitle, addPostContentValue);
   addPostTitle.value = "";
   addPostContentValue.value = "";
@@ -49,14 +49,15 @@ const addPostValue = function() {
 };
 
 const displayPost = function() {
-  const postContainer = document.getElementById("post-container");
+  const postContainer = document.querySelector("#post-container");
   let para = "";
-  storePosts.forEach(post => {
+  storePosts.forEach((post, index) => {
     para += `
       <div class="blog-post-card">
         <span class="close-btn">&times;</span>
         <h2>${post.title}</h2>
         <p>${post.content}</p>
+        <button class="delete-btn" id="${index}">Delete</button>
       </div>
     `;
   });
@@ -64,6 +65,12 @@ const displayPost = function() {
 };
 
 displayPost();
+
+const deleteBtn = document.querySelectorAll('.delete-btn');
+deleteBtn.addEventListener('click', (index) => {
+  storePosts.splice(index, 1);
+})
+
 
 // Fetch Blog Posts link
 
